@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Suhu</title>
+    <style>
+body { 
+    font-family: sans-serif; 
+    padding: 20px; 
+}
+.input { 
+    margin-bottom: 10px; 
+}
+.input { 
+    display: flex;
+    padding: 8px; 
+    font-size: 16px; 
+}
+.result { 
+    display: flex;
+    margin-top: 15px; 
+    font-size: 18px; 
+    font-weight: bold; 
+}
+.konversi {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.konversi > span {
+    display: flex;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <div class="konversi">
+        <span>Program Konversi Suhu</span>
+        <div class="input">
+            <input type="number" id="celcius" placeholder="Masukkan Celcius">
+            <button id="convertBtn">Konversi</button>
+        </div>
+        <div class="result"></div>
+    </div>
+    <script>
+        const inputCelcius = document.querySelector('#celcius');
+        const buttonConvert = document.querySelector('#convertBtn');
+        const divResult = document.querySelector('.result');
+
+        buttonConvert.addEventListener('click', () => {
+            const celcius = Number(inputCelcius.value);
+            
+            if (isNaN(celcius)) {
+                divResult.textContent = 'Silakan masukkan angka yang valid.';
+                return;
+            }
+
+            const fahrenheit = (celcius * 9/5) + 32;
+            divResult.textContent = `${celcius}°C = ${fahrenheit}°F`;
+        });
+    </script>
+</body>
+</html>
