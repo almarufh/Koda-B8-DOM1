@@ -33,6 +33,18 @@ body {
     display: flex;
     font-weight: bold;
 }
+.result {
+    display: flex;
+    flex-direction: column;
+}
+.result > table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table > thead > tr {
+    border: 1px solid;
+}
     </style>
 </head>
 <body>
@@ -52,15 +64,15 @@ body {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>25</td>
+                        <td class="inCelcius">25</td>
                         <td>27</td>
                     </tr>
                 </tbody>
             </table>
-            <span>Hasil :</span>
         </div>
     </div>
     <script>
+        const boxHistory = document.querySelector("tbody")
         const divResult = document.querySelector('.result');
         const form = document.getElementById("input")
         form.addEventListener("submit", (e) => {
@@ -76,7 +88,15 @@ body {
             }
 
             const fahrenheit = (celcius * 9/5) + 32;
-            divResult.textContent = `${celcius}°C = ${fahrenheit}°F`;
+            const history = document.createElement("tr")
+            const inCc = document.createElement("td")
+            const inFr = document.createElement("td")
+            inCc.textContent = value
+            inFr.textContent =fahrenheit
+            history.appendChild(inCc)
+            history.appendChild(inFr)
+            boxHistory.appendChild(history)
+            // divResult.textContent = `${celcius}°C = ${fahrenheit}°F`;
         })
     </script>
 </body>
