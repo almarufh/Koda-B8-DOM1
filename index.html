@@ -26,6 +26,7 @@ body {
 .konversi {
     margin: auto;
     display: flex;
+    gap: 10px;
     flex-direction: column;
     align-items: center;
 }
@@ -37,13 +38,19 @@ body {
     display: flex;
     flex-direction: column;
 }
-.result > table {
+table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+}th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
 }
-table > thead > tr {
-    border: 1px solid;
+td {
+    font-size: 12px;
+    text-align: left;
 }
     </style>
 </head>
@@ -58,14 +65,14 @@ table > thead > tr {
             <table>
                 <thead>
                     <tr>
-                        <th>Celcius</th>
-                        <th>fahrenheit</th>
+                        <th>CELCIUS</th>
+                        <th>FAHRENHEIT</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="inCelcius">25</td>
-                        <td>27</td>
+                        <!-- <td>25°C</td>
+                        <td>27°F</td> -->
                     </tr>
                 </tbody>
             </table>
@@ -91,12 +98,11 @@ table > thead > tr {
             const history = document.createElement("tr")
             const inCc = document.createElement("td")
             const inFr = document.createElement("td")
-            inCc.textContent = value
-            inFr.textContent =fahrenheit
+            inCc.textContent = `${value}°C`
+            inFr.textContent = `${fahrenheit.toFixed(2)}°F`
             history.appendChild(inCc)
             history.appendChild(inFr)
             boxHistory.appendChild(history)
-            // divResult.textContent = `${celcius}°C = ${fahrenheit}°F`;
         })
     </script>
 </body>
