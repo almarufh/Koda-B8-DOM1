@@ -38,19 +38,37 @@ body {
 <body>
     <div class="konversi">
         <span>Program Konversi Suhu</span>
-        <div class="input">
-            <input type="number" id="celcius" placeholder="Masukkan Celcius">
-            <button id="convertBtn">Konversi</button>
+        <form id="input">
+            <input type="number" id="celcius" placeholder="Masukkan Celcius" name="valueCelcius">
+            <button type="submit" id="convertBtn">Konversi</button>
+        </form>
+        <div class="result">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Celcius</th>
+                        <th>fahrenheit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>25</td>
+                        <td>27</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span>Hasil :</span>
         </div>
-        <div class="result"></div>
     </div>
     <script>
-        const inputCelcius = document.querySelector('#celcius');
-        const buttonConvert = document.querySelector('#convertBtn');
         const divResult = document.querySelector('.result');
-
-        buttonConvert.addEventListener('click', () => {
-            const celcius = Number(inputCelcius.value);
+        const form = document.getElementById("input")
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const data = new FormData(e.target)
+            const value = data.get("valueCelcius")
+            console.log(value)
+            const celcius = Number(value);
             
             if (isNaN(celcius)) {
                 divResult.textContent = 'Silakan masukkan angka yang valid.';
@@ -59,7 +77,7 @@ body {
 
             const fahrenheit = (celcius * 9/5) + 32;
             divResult.textContent = `${celcius}°C = ${fahrenheit}°F`;
-        });
+        })
     </script>
 </body>
 </html>
